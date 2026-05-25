@@ -264,20 +264,29 @@ h3.year {
   text-decoration: none;
 }
 
-.pub-badge {
+.pub-stars {
   display: inline-flex;
   align-items: center;
-  line-height: 0;
-}
-
-.pub-badge img {
-  display: block;
+  gap: 0.25rem;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  background: var(--chip-bg);
   border-radius: 5px;
+  font-style: normal;
+  transition: background 0.15s ease;
 }
 
-.pub-badge:hover {
+.pub-stars:hover {
+  background: var(--chip-bg-hover);
   text-decoration: none;
-  opacity: 0.85;
+}
+
+.pub-stars .star-glyph {
+  color: #f1c40f;
+  font-size: 0.95em;
+  line-height: 1;
 }
 
 .pub-award {

@@ -9,10 +9,7 @@
       content="Bin Lei — Ph.D. student at the University of Minnesota. Research on LLM agents, code generation, and computer use agents."
     />
     <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>"
-    />
+    <link rel="icon" href="data:," />
   </head>
   <body>
     <main>
@@ -243,9 +240,10 @@
               <span class="venue">NeurIPS 2024</span>
               <a class="pub-link" href="https://arxiv.org/abs/2404.04735" target="_blank" rel="noopener">Paper</a>
               <a class="pub-link" href="https://github.com/bin123apple/MACM" target="_blank" rel="noopener">Code</a>
-              <a class="pub-badge" href="https://github.com/bin123apple/MACM/stargazers" target="_blank" rel="noopener" aria-label="GitHub stars"
-                ><img src="https://img.shields.io/github/stars/bin123apple/MACM?style=flat&label=%E2%98%85&color=f1c40f&labelColor=f6f8fa" alt="GitHub stars" height="20"
-              /></a>
+              <a class="pub-stars" href="https://github.com/bin123apple/MACM/stargazers" target="_blank" rel="noopener" data-repo="bin123apple/MACM">
+                <span class="star-glyph">★</span>
+                <span class="star-count">94</span>
+              </a>
             </p>
           </li>
           <li class="pub">
@@ -259,9 +257,10 @@
               <span class="venue">arXiv 2024</span>
               <a class="pub-link" href="https://arxiv.org/abs/2405.14906" target="_blank" rel="noopener">Paper</a>
               <a class="pub-link" href="https://github.com/bin123apple/AutoCoder" target="_blank" rel="noopener">Code</a>
-              <a class="pub-badge" href="https://github.com/bin123apple/AutoCoder/stargazers" target="_blank" rel="noopener" aria-label="GitHub stars"
-                ><img src="https://img.shields.io/github/stars/bin123apple/AutoCoder?style=flat&label=%E2%98%85&color=f1c40f&labelColor=f6f8fa" alt="GitHub stars" height="20"
-              /></a>
+              <a class="pub-stars" href="https://github.com/bin123apple/AutoCoder/stargazers" target="_blank" rel="noopener" data-repo="bin123apple/AutoCoder">
+                <span class="star-glyph">★</span>
+                <span class="star-count">850</span>
+              </a>
             </p>
           </li>
           <li class="pub">
@@ -388,5 +387,22 @@
       </section>
 
     </main>
+    <script>
+      document.querySelectorAll(".pub-stars[data-repo]").forEach(async (el) => {
+        try {
+          const r = await fetch(
+            `https://api.github.com/repos/${el.dataset.repo}`
+          );
+          if (!r.ok) return;
+          const j = await r.json();
+          if (typeof j.stargazers_count === "number") {
+            el.querySelector(".star-count").textContent =
+              j.stargazers_count.toLocaleString();
+          }
+        } catch (e) {
+          /* keep static fallback */
+        }
+      });
+    </script>
   </body>
 </html>

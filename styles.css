@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light only;
   --bg: #ffffff;
   --text: #1f2328;
   --text-muted: #656d76;
@@ -8,21 +9,10 @@
   --border: #d8dee4;
   --chip-bg: #f6f8fa;
   --chip-bg-hover: #eaeef2;
+  --award-bg: #fff4d6;
+  --award-text: #8a6500;
+  --award-border: #f1d27a;
   --max-width: 760px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0d1117;
-    --text: #e6edf3;
-    --text-muted: #8b949e;
-    --text-soft: #b1bac4;
-    --accent: #8b8bf6;
-    --accent-soft: rgba(139, 139, 246, 0.12);
-    --border: #21262d;
-    --chip-bg: #161b22;
-    --chip-bg-hover: #21262d;
-  }
 }
 
 * {
@@ -154,19 +144,32 @@ h3.year {
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  color: var(--text-muted);
   background: transparent;
   transition:
-    color 0.15s ease,
     background 0.15s ease,
-    transform 0.15s ease;
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
+/* Brand colors per platform, in DOM order: email, scholar, github, linkedin */
+.socials a:nth-child(1) {
+  color: #ea4335;
+} /* Gmail red */
+.socials a:nth-child(2) {
+  color: #4285f4;
+} /* Google Scholar blue */
+.socials a:nth-child(3) {
+  color: #24292f;
+} /* GitHub */
+.socials a:nth-child(4) {
+  color: #0a66c2;
+} /* LinkedIn */
+
 .socials a:hover {
-  color: var(--accent);
-  background: var(--accent-soft);
+  background: var(--chip-bg);
   text-decoration: none;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .socials svg {
@@ -261,18 +264,33 @@ h3.year {
   text-decoration: none;
 }
 
-/* Footer */
-footer {
-  margin-top: 5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  text-align: center;
+.pub-badge {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
 }
 
-footer p {
-  margin: 0;
+.pub-badge img {
+  display: block;
+  border-radius: 5px;
+}
+
+.pub-badge:hover {
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.pub-award {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--award-text);
+  background: var(--award-bg);
+  border: 1px solid var(--award-border);
+  border-radius: 5px;
+  font-style: normal;
 }
 
 /* Mobile */
